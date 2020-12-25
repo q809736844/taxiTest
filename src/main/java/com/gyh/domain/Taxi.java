@@ -1,4 +1,4 @@
-package com.gyh.taxi;
+package com.gyh.domain;
 
 import com.gyh.utils.DateUtil;
 
@@ -12,11 +12,11 @@ public class Taxi {
     private boolean isRepair;
 
     public Taxi(String catLine) {
-        String[] carMessages = catLine.split("|");
+        String[] carMessages = catLine.split("\\|");
         this.carNo = carMessages[0];
         this.buyDate = DateUtil.parseDate(carMessages[1]);
         BrandName = carMessages[2];
-        this.runningKito = Long.parseLong(carMessages[0]);
+        this.runningKito = Long.parseLong(carMessages[3]);
         this.isRepair = "T".equals(carMessages[4])?true:false;
     }
 
@@ -58,5 +58,16 @@ public class Taxi {
 
     public void setRepair(boolean repair) {
         isRepair = repair;
+    }
+
+    @Override
+    public String toString() {
+        return "Taxi{" +
+                "carNo='" + carNo + '\'' +
+                ", buyDate=" + buyDate +
+                ", BrandName='" + BrandName + '\'' +
+                ", runningKito=" + runningKito +
+                ", isRepair=" + isRepair +
+                '}';
     }
 }
